@@ -13,17 +13,17 @@
 
 @implementation Bridging
 
-//- (void)testBridging {
-//    TrueTimeClient *client = [TrueTimeClient sharedInstance];
-//    [client startWithHostURLs:@[(id)[NSURL URLWithString:@"time.apple.com"]]];
-//
-//    NSDate *now = [[client referenceTime] now];
-//    NSLog(@"True time: %@", now);
-//    [client fetchIfNeededWithSuccess:^(NTPReferenceTime *referenceTime) {
-//        NSLog(@"True time: %@", [referenceTime now]);
-//    } failure:^(NSError *error) {
-//        NSLog(@"Error! %@", error);
-//    }];
-//}
+- (void)testBridging {
+    TrueTimeClient *client = [TrueTimeClient sharedInstance];
+    [client startWithPool:@[(id)[NSURL URLWithString:@"time.apple.com"]] port: 123];
+
+    NSDate *now = [[client referenceTime] now];
+    NSLog(@"True time: %@", now);
+    [client fetchIfNeededWithSuccess:^(NTPReferenceTime *referenceTime) {
+        NSLog(@"True time: %@", [referenceTime now]);
+    } failure:^(NSError *error) {
+        NSLog(@"Error! %@", error);
+    }];
+}
 
 @end
